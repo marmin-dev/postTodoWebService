@@ -1,5 +1,6 @@
 package com.mypost.todopost.entity;
 
+import com.mypost.todopost.dtos.PostUpdateRequestDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,5 +24,9 @@ public class Post {
     @Column(nullable = false)
     String content;
 
+    public void update(PostUpdateRequestDto dto){
+        this.title = dto.getTitle();
+        this.content = dto.getContent();
+    }
 
 }

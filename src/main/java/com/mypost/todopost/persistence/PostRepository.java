@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post,Long> {
 
-    @Query("SELECT p FROM post p ORDER BY p.id DESC LIMIT 1")
-    List<Post> findByIdDesc1();
+//    @Query("SELECT p FROM post p ORDER BY p.createdAt DESC LIMIT 1")
+//    List<Post> findByCreatedAtDesc1(); //index에 표시할 항목 불러오기 메서드
+
+    List<Post> findByAuthor(String author);
 }

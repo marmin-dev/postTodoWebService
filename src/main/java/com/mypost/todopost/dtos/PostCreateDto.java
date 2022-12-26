@@ -12,11 +12,11 @@ import javax.persistence.Column;
 @AllArgsConstructor
 public class PostCreateDto {
     @Column(nullable = false)
-    String title;
+    private String title;
     @Column(nullable = false)
-    String author;
+    private String author;
     @Column(nullable = false)
-    String content;
+    private String content;
 
     public Post toPostEntity(){
         return Post.builder().title(title)
