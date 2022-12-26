@@ -1,12 +1,12 @@
 package com.mypost.todopost.service;
 
-import com.mypost.todopost.dtos.PostCreateDto;
-import com.mypost.todopost.dtos.PostResponseDto;
-import com.mypost.todopost.dtos.PostUpdateRequestDto;
+import com.mypost.todopost.dtos.postDto.PostCreateDto;
+import com.mypost.todopost.dtos.postDto.PostResponseDto;
+import com.mypost.todopost.dtos.postDto.PostUpdateRequestDto;
 import com.mypost.todopost.entity.Post;
 import com.mypost.todopost.persistence.PostRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,14 +26,14 @@ public class PostService {
 
     @Transactional
     public PostResponseDto postFindById(Long id) {//글 조회하는 메서드
-        Post post = postRepository.findById(id).get();
+        Post post = postRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 글이 존재하지 않습니다"));
         PostResponseDto responseDto = new PostResponseDto(post);
         return responseDto;
     }
 
     @Transactional
     public List<Post> findByAuthor(String author) { //내가 쓴 글 조회하기
-        List<Post> authorList = postRepository.findByAuthor(author);
+        List<Post> authorList = postRepository.findByAuthor(author, Sort.by(Sort.Order.desc("id")));
         return authorList;
     }
 
@@ -44,6 +44,11 @@ public class PostService {
         return id;
     }
 
+    @Transactional
+    public Long deletePost(Long id){
+        postRepository.deleteById(id);
+        return id;
+    }
 
 
 

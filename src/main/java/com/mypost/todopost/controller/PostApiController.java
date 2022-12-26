@@ -1,11 +1,10 @@
 package com.mypost.todopost.controller;
 
-import com.mypost.todopost.dtos.PostCreateDto;
-import com.mypost.todopost.dtos.PostResponseDto;
-import com.mypost.todopost.dtos.PostUpdateRequestDto;
+import com.mypost.todopost.dtos.postDto.PostCreateDto;
+import com.mypost.todopost.dtos.postDto.PostUpdateRequestDto;
+import com.mypost.todopost.persistence.PostRepository;
 import com.mypost.todopost.service.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class PostApiController {
 
     private final PostService postService;
+    private final PostRepository postRepository;
 
     @PostMapping("/api/v1/post-post")
     public ResponseEntity<Long> postSave(@RequestBody PostCreateDto dto){ //save method
@@ -28,6 +28,9 @@ public class PostApiController {
     public ResponseEntity<Long> postUpdate(@PathVariable(value = "id") Long id, @RequestBody PostUpdateRequestDto dto){
         return ResponseEntity.status(HttpStatus.OK).body(postService.updatePost(id,dto));
     }
-
+    @DeleteMapping("/api/v1/post-delete{id}")
+    public ResponseEntity<Long> postDelete(@PathVariable(value = "id")Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(postService.deletePost(id));
+    }
 
 }

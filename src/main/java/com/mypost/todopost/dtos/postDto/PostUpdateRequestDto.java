@@ -1,4 +1,4 @@
-package com.mypost.todopost.dtos;
+package com.mypost.todopost.dtos.postDto;
 
 import com.mypost.todopost.entity.Post;
 import lombok.*;

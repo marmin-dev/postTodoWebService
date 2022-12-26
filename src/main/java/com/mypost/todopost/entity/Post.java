@@ -1,6 +1,6 @@
 package com.mypost.todopost.entity;
 
-import com.mypost.todopost.dtos.PostUpdateRequestDto;
+import com.mypost.todopost.dtos.postDto.PostUpdateRequestDto;
 import lombok.*;
 
 import javax.persistence.*;

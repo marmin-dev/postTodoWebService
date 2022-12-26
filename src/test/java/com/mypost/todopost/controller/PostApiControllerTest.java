@@ -1,6 +1,6 @@
 package com.mypost.todopost.controller;
 
-import com.mypost.todopost.dtos.PostCreateDto;
+import com.mypost.todopost.dtos.postDto.PostCreateDto;
 import com.mypost.todopost.entity.Post;
 import com.mypost.todopost.persistence.PostRepository;
 import org.junit.jupiter.api.Test;

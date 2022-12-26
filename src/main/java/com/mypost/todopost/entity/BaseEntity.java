@@ -1,4 +1,4 @@
-package com.mypost.todopost.config;
+package com.mypost.todopost.entity;
 
 import lombok.Getter;
 import lombok.Setter;
