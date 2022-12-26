@@ -45,11 +45,16 @@ public class PostService {
     }
 
     @Transactional
-    public Long deletePost(Long id){
+    public Long deletePost(Long id){//삭제하는 메서드
         postRepository.deleteById(id);
         return id;
     }
 
+    @Transactional
+    public List<Post> findAllByDesc(){ //전체 조회메서드
+      List<Post> posts = postRepository.findAll(Sort.by(Sort.Order.desc("createdAt")));
+      return posts;
+    }
 
 
 }
