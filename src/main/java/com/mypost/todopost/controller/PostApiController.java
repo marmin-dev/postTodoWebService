@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 public class PostApiController {
 
     private final PostService postService;
-    private final PostRepository postRepository;
 
     @PostMapping("/api/v1/post-post")
     public ResponseEntity<Long> postSave(@RequestBody PostCreateDto dto){ //save method

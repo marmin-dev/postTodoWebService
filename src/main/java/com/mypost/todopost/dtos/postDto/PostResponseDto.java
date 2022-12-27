@@ -1,6 +1,6 @@
 package com.mypost.todopost.dtos.postDto;
 
-import com.mypost.todopost.entity.Post;
+import com.mypost.todopost.entity.postEntity.Post;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

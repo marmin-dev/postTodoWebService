@@ -1,4 +1,4 @@
-package com.mypost.todopost.entity;
+package com.mypost.todopost.entity.postEntity;
 
 import com.mypost.todopost.dtos.postDto.PostUpdateRequestDto;
 import lombok.*;

@@ -1,10 +1,8 @@
 package com.mypost.todopost.dtos.postDto;
 
-import com.mypost.todopost.entity.Post;
 import lombok.*;
 
 import javax.persistence.Column;
-import javax.persistence.Id;
 
 @Data
 @NoArgsConstructor

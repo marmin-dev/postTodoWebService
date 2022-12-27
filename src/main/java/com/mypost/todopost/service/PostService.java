@@ -3,7 +3,7 @@ package com.mypost.todopost.service;
 import com.mypost.todopost.dtos.postDto.PostCreateDto;
 import com.mypost.todopost.dtos.postDto.PostResponseDto;
 import com.mypost.todopost.dtos.postDto.PostUpdateRequestDto;
-import com.mypost.todopost.entity.Post;
+import com.mypost.todopost.entity.postEntity.Post;
 import com.mypost.todopost.persistence.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;

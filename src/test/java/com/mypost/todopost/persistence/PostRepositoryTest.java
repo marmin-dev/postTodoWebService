@@ -1,6 +1,6 @@
 package com.mypost.todopost.persistence;
 
-import com.mypost.todopost.entity.Post;
+import com.mypost.todopost.entity.postEntity.Post;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
