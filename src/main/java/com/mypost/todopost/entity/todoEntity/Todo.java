@@ -17,9 +17,9 @@ public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
-    public boolean done =false;
     @Column(nullable = false)
     public String author;
+
     @Column(nullable = false)
     public String content;
 

@@ -1,6 +1,5 @@
 package com.mypost.todopost.dtos.todoDto;
 
-import com.mypost.todopost.entity.postEntity.Post;
 import com.mypost.todopost.entity.todoEntity.Todo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +14,6 @@ import javax.persistence.Column;
 @Builder
 public class TodoCreateDto {
 
-    public boolean check;
 
     @Column(nullable = false)
     public String author;
@@ -25,7 +23,6 @@ public class TodoCreateDto {
 
     public Todo toTodoEntity(TodoCreateDto todoCreateDto){
         return Todo.builder()
-                .done(todoCreateDto.isCheck())
                 .author(todoCreateDto.getAuthor())
                 .content(todoCreateDto.getContent())
                 .build();

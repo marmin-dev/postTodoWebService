@@ -17,18 +17,17 @@ public class TodoApiController {
     public ResponseEntity<Long> createTodo(@RequestBody TodoCreateDto dto){
         return ResponseEntity.status(HttpStatus.OK).body(todoService.createTodo(dto));
     }
+
     @PutMapping("/api/v1/todo-update{id}")
     public ResponseEntity<Long> updateTodo(@PathVariable Long id, @RequestParam String content){
         return ResponseEntity.status(HttpStatus.OK).body(todoService.updateTodo(id,content));
     }
-    @PutMapping("/api/v1/todo-isdone{id}")
-    public ResponseEntity<Long> updateIsDone(@PathVariable Long id, @RequestParam boolean done){
-        return ResponseEntity.status(HttpStatus.OK).body(todoService.todoIsDone(id,done));
-    }
+
     @GetMapping("/api/v1/todo-getbyid{id}")
     public ResponseEntity<TodoResponseDto> getById(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(todoService.getById(id));
     }
+
     @DeleteMapping("/api/v1/todo-delete{id}")
     public ResponseEntity<Long> deleteById(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(todoService.todoDelete(id));
