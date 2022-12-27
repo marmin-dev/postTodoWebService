@@ -15,6 +15,7 @@ public class IndexController {
     @GetMapping("/")
     public String index(Model model){
         model.addAttribute("todo",todoService.getAllByDesc());
+        model.addAttribute("post",postService.findRecent());
         return "index";
     }
 }

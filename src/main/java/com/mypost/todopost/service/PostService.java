@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -54,6 +55,13 @@ public class PostService {
     public List<Post> findAllByDesc(){ //전체 조회메서드
       List<Post> posts = postRepository.findAll(Sort.by(Sort.Order.desc("createdAt")));
       return posts;
+    }
+
+    @Transactional
+    public List<PostResponseDto> findRecent(){
+        List<PostResponseDto> recentDto =
+                postRepository.findByRecent().stream().map(post -> new PostResponseDto(post)).collect(Collectors.toList());
+        return recentDto;
     }
 
 

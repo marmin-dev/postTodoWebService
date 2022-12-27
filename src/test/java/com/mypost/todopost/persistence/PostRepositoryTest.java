@@ -11,6 +11,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -40,6 +41,16 @@ public class PostRepositoryTest {
         for(Post post : posts){
             System.out.println(post.toString());
         }
+    }
+    @Test
+    void findRecentTest(){
+        Post post1 = new Post();
+        post1.setTitle("김치삼");
+        post1.setAuthor("귀귀");
+        post1.setContent("정열멘");
+        postRepository.save(post1);
+        Post post = postRepository.findByRecent().stream().collect(Collectors.toList()).get(0);
+        System.out.println(post.toString());
     }
 
 }
