@@ -52,13 +52,15 @@ public class PostService {
     }
 
     @Transactional
-    public List<Post> findAllByDesc(){ //전체 조회메서드
-      List<Post> posts = postRepository.findAll(Sort.by(Sort.Order.desc("createdAt")));
+    public List<PostResponseDto> findAllByDesc(){ //전체 조회메서드
+      List<PostResponseDto> posts =
+              postRepository.findAllByDesc().stream().
+                      map(post -> new PostResponseDto(post)).collect(Collectors.toList());
       return posts;
     }
 
     @Transactional
-    public List<PostResponseDto> findRecent(){
+    public List<PostResponseDto> findRecent(){//최근 글 조회메서드
         List<PostResponseDto> recentDto =
                 postRepository.findByRecent().stream().map(post -> new PostResponseDto(post)).collect(Collectors.toList());
         return recentDto;
