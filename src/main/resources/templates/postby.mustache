@@ -12,7 +12,16 @@
 </div>
 {{#post}}
     <div>
-        <h2>{{title}}</h2>
+        <div class="container">
+            <div class ="row">
+                <div class="col-8">
+                    <h2>{{title}}</h2>
+                </div>
+                <div class="col-1">
+                <a type="button" class="btn btn-success" href="/post/update/{{id}}">글수정</a>
+                </div>
+            </div>
+        </div>
         <h6>{{author}}</h6>
         <p>{{content}}</p>
     </div>

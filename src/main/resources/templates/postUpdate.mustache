@@ -1,0 +1,35 @@
+{{>layout/header}}
+<h1 style="text-align:center "><a href="/" style="text-decoration:none,color:black">TodoPostWeb</a></h1>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container px-4">
+        <a class="navbar-brand" href="/">내게시물</a>
+        <a class="navbar-brand" href="/allposts">전체게시물</a>
+        <a class="navbar-brand" href="/">게시물작성</a>
+        <a class="navbar-brand" href="/">할일추가</a>
+    </div>
+</nav>
+<div>
+</div>
+{{#post}}
+  <div>
+      <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default">제목</span>
+          <input type="text" class="form-control" aria-label="Sizing example input"
+                 aria-describedby="inputGroup-sizing-default" value={{title}}>
+      </div>
+    <div>
+        <h6 class="class=card-subtitle mb-2 text-muted">{{author}}</h6>
+    </div>
+      <div class="input-group">
+          <span class="input-group-text">내용</span>
+          <textarea class="form-control" aria-label="With textarea"
+          >{{content}}</textarea>
+      </div>
+  </div>
+  <div class="row">
+      <button type="button" class="btn btn-primary" id="btn-postupdate">수정 완료</button>
+      <a href="/" role="button" class="btn btn-secondary">취소</a>
+      <button type="button" class="btn btn-danger" id="btn-postdelete">삭제</button>
+  </div>
+{{/post}}
+{{>layout/footer}}
