@@ -8,8 +8,18 @@ var main ={
         $('#btn-postUpdate').on('click', function (){
             _this.postUpdate();
         });
+        $('#btn-postDelete').on('click', function (){
+            _this.postDelete();
+        });
+        $('#btn-todoCreate').on('click',function(){
+            _this.todoCreate();
+        });
+        $('#btn-todoUpdate').on('click',function(){
+            _this.todoUpdate();
+        });
     },
     //function Impl
+    //게시물 저장
      savePost : function () {
             var data = {
                 title: $('#title').val(),
@@ -30,7 +40,7 @@ var main ={
                 alert(JSON.stringify(error));
             });
         },
-
+//게시물 업데이트
     postUpdate : function() {
         var data = {
             title: $('#title').val(),
@@ -51,6 +61,59 @@ var main ={
         }).fail(function(error){
         alert(JSON.stringify(error));
         });
-    }
+    },
+    //게시물 삭제
+    postDelete : function() {
+        var id = $('#id').val();
+        $.ajax({
+            type:'DELETE',
+            url: '/api/v1/post/'+id,
+            dataType : 'json',
+            contentType:'application/json; charset=utf-8',
+            data: JSON.stringify(id)
+        }).done(function(){
+            alert('글이 삭제되었습니다');
+            window.location.href= "/"
+        }).fail(function(error){
+            alert(JSON.stringify(error));
+        });
+    },
+    //할일 추가
+    todoCreate : function(){
+        var data = {
+            author : $('#todoAuthor').val(),
+            content : $('#todoContent').val()
+        };
+        $.ajax({
+            type:'POST',
+            url:'/api/v1/todo',
+            dataType :'json',
+            contentType:'application/json; charset=utf-8',
+            data:JSON.stringify(data)
+        }).done(function(){
+            alert('할일 등록!');
+            window.location.href="/";
+        }).fail(function(error){
+            alert(JSON.stringify(error));
+        });
+    },
+    //할일 수정
+    todoUpdate : function(){
+            var content = $('#todoContent');
+            var id = $('#id');
+            $.ajax({
+                type:'PUT',
+                url:'/api/v1/todo/'+id,
+                dataType :'json',
+                contentType:'application/json; charset=utf-8',
+                data:JSON.stringify(content)
+            }).done(function(){
+                alert('할일 수정!');
+                window.location.href="/";
+            }).fail(function(error){
+                alert(JSON.stringify(error));
+            });
+        },
+
 };
 main.init();

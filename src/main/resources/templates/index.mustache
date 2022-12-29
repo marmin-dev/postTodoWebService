@@ -5,7 +5,7 @@
         <a class="navbar-brand" href="/">내게시물</a>
         <a class="navbar-brand" href="/post/all">전체게시물</a>
         <a class="navbar-brand" href="/post/create">게시물작성</a>
-        <a class="navbar-brand" href="/">할일추가</a>
+        <a class="navbar-brand" href="/todo/create">할일추가</a>
     </div>
 </nav>
 <div>
@@ -14,8 +14,10 @@
     <table class="table table-horizontal table-bordered">
         <thead class="thead-strong">
         <tr>
-            <th style="width:100px">할일끝!</th>
-            <th>할일</th>
+            <th class="col-1">할일끝!</th>
+            <th class="col-7">할일</th>
+            <th class="col-1">수정</th>
+            <th class="col-1">삭제</th>
         </tr>
         </thead>
         <tbody id="tbody">
@@ -23,6 +25,8 @@
             <tr>
                 <td><input class="form-check-input" type="checkbox" value="다했니?" id="flexCheckDefault"></td>
                 <td>{{content}}</td>
+                <td><a type="button" class="btn btn-success" href="/todo/update/{{id}}">글수정</a></td>
+                <td><button type="button" class="btn btn-danger" id="btn-todoDelete">삭제하기</button></td>
             </tr>
         {{/todo}}
         </tbody>

@@ -5,6 +5,7 @@ import com.mypost.todopost.persistence.TodoRepository;
 import lombok.*;
 
 import javax.persistence.Column;
+import javax.persistence.Id;
 
 @Data
 @ToString
@@ -13,10 +14,13 @@ import javax.persistence.Column;
 @Builder
 public class TodoResponseDto {
 
+    Long id;
+
     @Column(nullable = false)
     public String content;
 
     public TodoResponseDto (Todo todo){
+        this.id = todo.getId();
         this.content = todo.getContent();
     }
 }

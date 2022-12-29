@@ -1,0 +1,37 @@
+{{>layout/header}}
+<h1 style="text-align:center "><a href="/" style="text-decoration:none,color:black">TodoPostWeb</a></h1>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container px-4">
+        <a class="navbar-brand" href="/">내게시물</a>
+        <a class="navbar-brand" href="/post/all">전체게시물</a>
+        <a class="navbar-brand" href="/post/create">게시물작성</a>
+        <a class="navbar-brand" href="/todo/create">할일추가</a>
+    </div>
+</nav>
+<div>
+</div>
+<div>
+    {{#todo}}
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default" id="id"
+                   value={{id}}>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">오늘 할일</span>
+        <input type="text" class="form-control" aria-label="Sizing example input"
+               aria-describedby="inputGroup-sizing-default" id="todoContent"
+        value={{content}}>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">작성자</span>
+        <input type="text" class="form-control" aria-label="Sizing example input"
+               aria-describedby="inputGroup-sizing-default" id="todoAuthor" value={{author}}
+               readonly>
+    </div>
+</div>
+    {{/todo}}
+<div class="row">
+    <button type="button" class="btn btn-primary" id="btn-todoUpdate">할일 수정</button>
+    <a href="/" role="button" class="btn btn-secondary">취소</a>
+</div>
+{{>layout/footer}}

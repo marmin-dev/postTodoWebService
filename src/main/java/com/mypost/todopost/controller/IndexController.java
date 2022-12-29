@@ -43,4 +43,13 @@ public class IndexController {
     public String postCreate(){
         return "postcreate";
     }
+    @GetMapping("/todo/create")
+    public String todoCreate(){
+        return "todoCreate";
+    }
+    @GetMapping("todo/update/{id}")
+    public String todoUpdate(@PathVariable Long id, Model model){
+        model.addAttribute("todo",todoService.getById(id));
+        return "todoUpdate";
+    }
 }

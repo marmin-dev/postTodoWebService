@@ -13,22 +13,22 @@ import org.springframework.web.bind.annotation.*;
 public class TodoApiController {
     private final TodoService todoService;
 
-    @PostMapping("/api/v1/todo-post")
+    @PostMapping("/api/v1/todo")
     public ResponseEntity<Long> createTodo(@RequestBody TodoCreateDto dto){
         return ResponseEntity.status(HttpStatus.OK).body(todoService.createTodo(dto));
     }
 
-    @PutMapping("/api/v1/todo-update{id}")
+    @PutMapping("/api/v1/todo/{id}")
     public ResponseEntity<Long> updateTodo(@PathVariable Long id, @RequestParam String content){
         return ResponseEntity.status(HttpStatus.OK).body(todoService.updateTodo(id,content));
     }
 
-    @GetMapping("/api/v1/todo-getbyid{id}")
+    @GetMapping("/api/v1/todo/{id}")
     public ResponseEntity<TodoResponseDto> getById(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(todoService.getById(id));
     }
 
-    @DeleteMapping("/api/v1/todo-delete{id}")
+    @DeleteMapping("/api/v1/todo/{id}")
     public ResponseEntity<Long> deleteById(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(todoService.todoDelete(id));
     }
