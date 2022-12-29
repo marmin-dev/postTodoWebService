@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RequiredArgsConstructor
@@ -19,12 +20,12 @@ public class IndexController {
         model.addAttribute("post",postService.findRecent());
         return "index";
     }
-    @GetMapping("/allposts")
+    @GetMapping("/post/all")
     public String allPosts(Model model){ //전체 포스트 조회 화면 반환
         model.addAttribute("post",postService.findAllByDesc());
         return "allposts";
     }
-    @GetMapping("/postby/{id}")
+    @GetMapping("/post/find/{id}")
     public String postById(@PathVariable Long id, Model model){
         model.addAttribute("post",postService.postFindById(id));
         return "postby";
@@ -33,5 +34,9 @@ public class IndexController {
     public String postUpdateById(@PathVariable Long id, Model model){
         model.addAttribute("post",postService.postFindById(id));
         return "postUpdate";
+    }
+    @GetMapping("/post/create")
+    public String postCreate(){
+        return "postcreate";
     }
 }
