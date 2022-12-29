@@ -12,17 +12,20 @@
 </div>
 {{#post}}
   <div>
+      <div>
+          <input type="text" id="id" readonly value={{id}}>
+      </div>
       <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default">제목</span>
           <input type="text" class="form-control" aria-label="Sizing example input"
-                 aria-describedby="inputGroup-sizing-default" value={{title}}>
+                 aria-describedby="inputGroup-sizing-default" id="title" value={{title}}>
       </div>
     <div>
-        <h6 class="class=card-subtitle mb-2 text-muted">{{author}}</h6>
+        <h6 class="class=card-subtitle mb-2 text-muted" id="author">{{author}}</h6>
     </div>
       <div class="input-group">
           <span class="input-group-text">내용</span>
-          <textarea class="form-control" aria-label="With textarea"
+          <textarea class="form-control" aria-label="With textarea" id="content"
           >{{content}}</textarea>
       </div>
   </div>

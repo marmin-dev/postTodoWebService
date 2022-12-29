@@ -1,5 +1,6 @@
 package com.mypost.todopost.controller;
 
+import com.mypost.todopost.dtos.postDto.PostResponseDto;
 import com.mypost.todopost.service.PostService;
 import com.mypost.todopost.service.TodoService;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -27,7 +30,8 @@ public class IndexController {
     }
     @GetMapping("/post/find/{id}")
     public String postById(@PathVariable Long id, Model model){
-        model.addAttribute("post",postService.postFindById(id));
+        PostResponseDto dto = postService.postFindById(id);
+        model.addAttribute("post",dto);
         return "postby";
     }
     @GetMapping("/post/update/{id}")

@@ -26,12 +26,12 @@ public class PostApiController {
     }
 
     @PutMapping("/api/v1/post/{id}")
-    public ResponseEntity<Long> postUpdate(@PathVariable(value = "id") Long id, @RequestBody PostUpdateRequestDto dto){
+    public ResponseEntity<Long> postUpdate(@PathVariable Long id, @RequestBody PostUpdateRequestDto dto){
         return ResponseEntity.status(HttpStatus.OK).body(postService.updatePost(id,dto));
     }
 
     @DeleteMapping("/api/v1/post/{id}")
-    public ResponseEntity<Long> postDelete(@PathVariable(value = "id")Long id){
+    public ResponseEntity<Long> postDelete(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(postService.deletePost(id));
     }
 
