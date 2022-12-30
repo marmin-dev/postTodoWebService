@@ -4,7 +4,7 @@ var main ={
     //functions
         $('#btn-postCreate').on('click', function () {
             _this.savePost();
-            });
+        });
         $('#btn-postUpdate').on('click', function (){
             _this.postUpdate();
         });
@@ -16,6 +16,9 @@ var main ={
         });
         $('#btn-todoUpdate').on('click',function(){
             _this.todoUpdate();
+        });
+        $('#btn-todoDelete').on('click',function(){
+            _this.todoDelete();
         });
     },
     //function Impl
@@ -99,14 +102,18 @@ var main ={
     },
     //할일 수정
     todoUpdate : function(){
-            var content = $('#todoContent');
-            var id = $('#id');
+            // var data ={
+            //     id:$('#id'),
+            //     content:$('#todoContent')
+            // };
+            var content = $('#todoContent').val();
+            var id = $('#id').val();
             $.ajax({
                 type:'PUT',
-                url:'/api/v1/todo/'+id,
-                dataType :'json',
-                contentType:'application/json; charset=utf-8',
-                data:JSON.stringify(content)
+                url: '/api/v1/todo/'+id+'?content='+content,
+                // dataType : 'json',
+                // contentType:'application/json; charset=utf-8',
+                // data:JSON.stringify(data)
             }).done(function(){
                 alert('할일 수정!');
                 window.location.href="/";
@@ -114,6 +121,21 @@ var main ={
                 alert(JSON.stringify(error));
             });
         },
+    todoDelete : function() {
+            var id = $('#id').val();
+            $.ajax({
+                type:'DELETE',
+                url: '/api/v1/todo/'+id,
+                dataType : 'json',
+                contentType:'application/json; charset=utf-8',
+                data: JSON.stringify(id)
+            }).done(function(){
+                alert('할일이 삭제되었습니다');
+                window.location.href= "/"
+            }).fail(function(error){
+                alert(JSON.stringify(error));
+            });
+        }
 
 };
 main.init();

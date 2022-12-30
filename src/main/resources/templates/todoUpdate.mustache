@@ -9,29 +9,25 @@
     </div>
 </nav>
 <div>
+    <h2>할일 수정하기</h2>
 </div>
 <div>
     {{#todo}}
         <div class="input-group mb-3">
             <input type="text" class="form-control" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default" id="id"
-                   value={{id}}>
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-default">오늘 할일</span>
-        <input type="text" class="form-control" aria-label="Sizing example input"
-               aria-describedby="inputGroup-sizing-default" id="todoContent"
-        value={{content}}>
-    </div>
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-default">작성자</span>
-        <input type="text" class="form-control" aria-label="Sizing example input"
-               aria-describedby="inputGroup-sizing-default" id="todoAuthor" value={{author}}
-               readonly>
-    </div>
-</div>
+                   value={{id}} readonly>
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default" id="todoContent"
+                   value="{{content}}">
+        </div>
     {{/todo}}
+</div>
 <div class="row">
     <button type="button" class="btn btn-primary" id="btn-todoUpdate">할일 수정</button>
+    <button type="button" class="btn btn-danger" id="btn-todoDelete">삭제하기</button>
     <a href="/" role="button" class="btn btn-secondary">취소</a>
 </div>
 {{>layout/footer}}

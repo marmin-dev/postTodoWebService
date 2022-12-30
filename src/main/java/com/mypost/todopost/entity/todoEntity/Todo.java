@@ -1,5 +1,6 @@
 package com.mypost.todopost.entity.todoEntity;
 
+import com.mypost.todopost.dtos.todoDto.TodoResponseDto;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.bind.DefaultValue;
@@ -22,7 +23,5 @@ public class Todo {
 
     @Column(nullable = false)
     public String content;
-
-
 
 }

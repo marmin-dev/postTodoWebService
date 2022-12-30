@@ -19,8 +19,8 @@ public class TodoApiController {
     }
 
     @PutMapping("/api/v1/todo/{id}")
-    public ResponseEntity<Long> updateTodo(@PathVariable Long id, @RequestParam String content){
-        return ResponseEntity.status(HttpStatus.OK).body(todoService.updateTodo(id,content));
+    public ResponseEntity<Long> updateTodo(@PathVariable Long id,@RequestParam String content){
+        return ResponseEntity.status(HttpStatus.OK).body(todoService.updateTodo(id, content));
     }
 
     @GetMapping("/api/v1/todo/{id}")
