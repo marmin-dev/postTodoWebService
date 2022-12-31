@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
+
 
 @Data
 @ToString
@@ -20,11 +22,12 @@ public class PostResponseDto {
 
     private String content;
 
+    private LocalDateTime modifiedAt;
     public PostResponseDto (Post post){
         this.id = post.getId();
         this.title = post.getTitle();
         this.author = post.getAuthor();
         this.content = post.getContent();
-
+        this.modifiedAt = post.getModifiedAt();
     }
 }

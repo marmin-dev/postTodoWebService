@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface PostRepository extends JpaRepository<Post,Long> {
     List<Post> findByAuthor(String author, Sort sort);
     @Query(value = "SELECT * FROM post ORDER BY id DESC LIMIT 1", nativeQuery = true)

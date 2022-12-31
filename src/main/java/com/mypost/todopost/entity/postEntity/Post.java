@@ -1,6 +1,7 @@
 package com.mypost.todopost.entity.postEntity;
 
 import com.mypost.todopost.dtos.postDto.PostUpdateRequestDto;
+import com.mypost.todopost.entity.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @Builder
 @ToString
 @Table(name = "post")
-public class Post {
+public class Post extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;

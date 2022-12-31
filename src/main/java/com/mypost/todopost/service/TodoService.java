@@ -5,7 +5,6 @@ import com.mypost.todopost.dtos.todoDto.TodoResponseDto;
 import com.mypost.todopost.entity.todoEntity.Todo;
 import com.mypost.todopost.persistence.TodoRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
