@@ -1,5 +1,6 @@
 package com.mypost.todopost.service;
 
+import com.mypost.todopost.dtos.SessionUser;
 import com.mypost.todopost.dtos.postDto.PostCreateDto;
 import com.mypost.todopost.dtos.postDto.PostResponseDto;
 import com.mypost.todopost.dtos.postDto.PostUpdateRequestDto;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,7 +21,7 @@ public class PostService {
 
     private final PostRepository postRepository;
 
-
+    private final HttpSession httpSession;
     @Transactional
     public Long createPost(PostCreateDto postCreateDto){//게시글 저장 메서드
       return postRepository.save(postCreateDto.toPostEntity()).getId();
@@ -30,12 +32,6 @@ public class PostService {
         Post post = postRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 글이 존재하지 않습니다"));
         PostResponseDto responseDto = new PostResponseDto(post);
         return responseDto;
-    }
-
-    @Transactional
-    public List<Post> findByAuthor(String author) { //내가 쓴 글 조회하기
-        List<Post> authorList = postRepository.findByAuthor(author, Sort.by(Sort.Order.desc("id")));
-        return authorList;
     }
 
     @Transactional
@@ -64,6 +60,16 @@ public class PostService {
         List<PostResponseDto> recentDto =
                 postRepository.findByRecent().stream().map(post -> new PostResponseDto(post)).collect(Collectors.toList());
         return recentDto;
+    }
+
+    @Transactional
+    public List<PostResponseDto> findByAuthor(String author){ //내가 쓴 글 조회하기
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        List<PostResponseDto> dto =
+                postRepository.findByAuthor(user.getName(),Sort.by(Sort.Order.desc("id")))
+                        .stream().map(post->new PostResponseDto(post))
+                        .collect(Collectors.toList());
+        return dto;
     }
 
 

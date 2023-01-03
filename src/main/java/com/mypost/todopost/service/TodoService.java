@@ -1,13 +1,16 @@
 package com.mypost.todopost.service;
 
+import com.mypost.todopost.dtos.SessionUser;
 import com.mypost.todopost.dtos.todoDto.TodoCreateDto;
 import com.mypost.todopost.dtos.todoDto.TodoResponseDto;
 import com.mypost.todopost.entity.todoEntity.Todo;
 import com.mypost.todopost.persistence.TodoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +19,7 @@ import java.util.stream.Collectors;
 public class TodoService {
 
     private final TodoRepository todoRepository;
-
+    private final HttpSession httpSession;
     @Transactional
     public Long createTodo(TodoCreateDto todoCreateDto){
         return todoRepository.save(todoCreateDto.toTodoEntity(todoCreateDto)).getId();
@@ -38,9 +41,11 @@ public class TodoService {
     }
 
     @Transactional(readOnly = true)
-    public List<TodoResponseDto> getAllByDesc(){
+    public List<TodoResponseDto> getAllByAuthor(String name){
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
         List<TodoResponseDto> todoList =
-                todoRepository.findAll().stream().map(todo->new TodoResponseDto(todo)).collect(Collectors.toList());
+                todoRepository.findByAuthor(user.getName(), Sort.by(Sort.Order.desc("id")))
+                        .stream().map(todo-> new TodoResponseDto()).collect(Collectors.toList());
         return todoList;
     }
 

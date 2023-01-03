@@ -10,25 +10,14 @@
         <a class="navbar-brand" href="/todo/create">할일추가</a>
     </div>
 </nav>
-<div>
-</div>
+<h2>내 게시물</h2>
 {{#post}}
-    <div>
-        <div>
-            <p>{{modifiedAt}}</p>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"><a href="/post/find/{{id}}">{{title}}</a></h5>
+            <h6 class="class=card-subtitle mb-2 text-muted">{{author}}</h6>
+            <p class="card-text">{{content}}</p>
         </div>
-        <div class="container">
-            <div class ="row">
-                <div class="col-8">
-                    <h2>{{title}}</h2>
-                </div>
-                <div class="col-1">
-                <a type="button" class="btn btn-success" href="/post/update/{{id}}">글수정</a>
-                </div>
-            </div>
-        </div>
-        <h6>{{author}}</h6>
-        <p>{{content}}</p>
     </div>
 {{/post}}
 {{>layout/footer}}

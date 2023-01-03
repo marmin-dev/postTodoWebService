@@ -15,4 +15,5 @@ public interface PostRepository extends JpaRepository<Post,Long> {
 
     @Query(value = "SELECT * FROM post ORDER BY id DESC", nativeQuery = true)
     List<Post> findAllByDesc();
+
 }
