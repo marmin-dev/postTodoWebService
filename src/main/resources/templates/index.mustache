@@ -1,5 +1,15 @@
 {{>layout/header}}
-<h1 style="text-align:center "><a href="/" style="text-decoration:none,color:black">TodoPostWeb</a></h1>
+<div><h1 style="text-align:center "><a href="/" style="text-decoration:none;color:blue;">TodoPostWeb</a></h1>
+    <div>
+    {{#userName}}
+        <a href="/logout" class="btn btn-success active" role="button">로그아웃</a>
+        <span id="user">{{userName}}</span>
+    {{/userName}}
+    {{^userName}}
+        <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">구글 로그인</a>
+    {{/userName}}
+    </div>
+</div>
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container px-4">
         <a class="navbar-brand" href="/">내게시물</a>

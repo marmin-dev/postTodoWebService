@@ -1,5 +1,6 @@
 package com.mypost.todopost.controller;
 
+import com.mypost.todopost.dtos.SessionUser;
 import com.mypost.todopost.dtos.postDto.PostResponseDto;
 import com.mypost.todopost.service.PostService;
 import com.mypost.todopost.service.TodoService;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -17,10 +19,16 @@ import java.util.List;
 public class IndexController {
     private final PostService postService;
     private final TodoService todoService;
+    private final HttpSession httpSession;
     @GetMapping("/")
     public String index(Model model){//메인화면 반환
         model.addAttribute("todo",todoService.getAllByDesc());
         model.addAttribute("post",postService.findRecent());
+        SessionUser user = (SessionUser) httpSession
+                .getAttribute("user");
+        if(user != null){
+            model.addAttribute("userName",user.getName());
+        }
         return "index";
     }
     @GetMapping("/post/all")

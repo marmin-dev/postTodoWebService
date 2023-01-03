@@ -14,10 +14,12 @@ public class SecurityConfig {
     private final CustomOauth2UserService customOauth2UserService;
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-        http.authorizeRequests()
-                .antMatchers("/","/css/**","/images/**",
-                        "/js/**").permitAll()
-                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/","/css/**","/images/**","/js/**")
+                .permitAll()
+                .antMatchers("/api/v1/**")
+                .hasRole(Role.USER.name())
                 .anyRequest().authenticated()
                 .and()
                 .logout()
