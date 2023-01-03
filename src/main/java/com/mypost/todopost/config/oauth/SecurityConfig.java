@@ -1,5 +1,7 @@
-package com.mypost.todopost.user;
+package com.mypost.todopost.config.oauth;
 
+import com.mypost.todopost.service.CustomOauth2UserService;
+import com.mypost.todopost.user.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
