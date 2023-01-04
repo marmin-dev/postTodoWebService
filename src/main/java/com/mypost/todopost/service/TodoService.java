@@ -45,7 +45,7 @@ public class TodoService {
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
         List<TodoResponseDto> todoList =
                 todoRepository.findByAuthor(user.getName(), Sort.by(Sort.Order.desc("id")))
-                        .stream().map(todo-> new TodoResponseDto()).collect(Collectors.toList());
+                        .stream().map(todo-> new TodoResponseDto(todo)).collect(Collectors.toList());
         return todoList;
     }
 
