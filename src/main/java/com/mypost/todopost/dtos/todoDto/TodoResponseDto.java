@@ -1,11 +1,9 @@
 package com.mypost.todopost.dtos.todoDto;
 
 import com.mypost.todopost.entity.todoEntity.Todo;
-import com.mypost.todopost.persistence.TodoRepository;
 import lombok.*;
 
 import javax.persistence.Column;
-import javax.persistence.Id;
 
 @Data
 @ToString
@@ -14,13 +12,16 @@ import javax.persistence.Id;
 @Builder
 public class TodoResponseDto {
 
-    Long id;
+    private Long id;
+
+    private String author;
 
     @Column(nullable = false)
-    public String content;
+    private String content;
 
     public TodoResponseDto (Todo todo){
         this.id = todo.getId();
+        this.author = todo.getAuthor();
         this.content = todo.getContent();
     }
 }

@@ -102,25 +102,18 @@ var main ={
     },
     //할일 수정
     todoUpdate : function(){
-            // var data ={
-            //     id:$('#id'),
-            //     content:$('#todoContent')
-            // };
             var content = $('#todoContent').val();
             var id = $('#id').val();
             $.ajax({
                 type:'PUT',
                 url: '/api/v1/todo/'+id+'?content='+content,
-                // dataType : 'json',
-                // contentType:'application/json; charset=utf-8',
-                // data:JSON.stringify(data)
             }).done(function(){
                 alert('할일 수정!');
                 window.location.href="/";
             }).fail(function(error){
                 alert(JSON.stringify(error));
             });
-        },
+    },
     todoDelete : function() {
             var id = $('#id').val();
             $.ajax({
@@ -136,6 +129,5 @@ var main ={
                 alert(JSON.stringify(error));
             });
         }
-
-};
+}
 main.init();

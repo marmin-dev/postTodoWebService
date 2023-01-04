@@ -2,7 +2,6 @@ package com.mypost.todopost.controller;
 
 import com.mypost.todopost.dtos.postDto.PostCreateDto;
 import com.mypost.todopost.dtos.postDto.PostUpdateRequestDto;
-import com.mypost.todopost.persistence.PostRepository;
 import com.mypost.todopost.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -58,7 +58,8 @@ public class PostService {
     @Transactional
     public List<PostResponseDto> findRecent(){//최근 글 조회메서드
         List<PostResponseDto> recentDto =
-                postRepository.findByRecent().stream().map(post -> new PostResponseDto(post)).collect(Collectors.toList());
+                postRepository.findByRecent().stream().map(post ->
+                        new PostResponseDto(post)).collect(Collectors.toList());
         return recentDto;
     }
 

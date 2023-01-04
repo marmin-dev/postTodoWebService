@@ -9,10 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -61,10 +59,11 @@ public class IndexController {
     }
     @GetMapping("/post/update/{id}")  // 내 게시물 수정
     public String postUpdateById(@PathVariable Long id, Model model){
-        model.addAttribute("post",postService.postFindById(id));
+        PostResponseDto dto = postService.postFindById(id);
+        model.addAttribute("post",dto);
         SessionUser user =(SessionUser) httpSession.getAttribute("user");
-        if(user != null){
-            model.addAttribute("userName",user.getName());
+        if(user != null) {
+            model.addAttribute("userName", user.getName());
         }
         return "postUpdate";
     }
